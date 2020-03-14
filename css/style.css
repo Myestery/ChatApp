@@ -1,0 +1,337 @@
+body{
+    background-color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+html{
+    /* margin: 0; */
+    height: 100%;
+}
+h4{
+    padding-left: 20px;
+}
+#main{
+    margin-top: 60px;
+}
+.page-content{
+    min-height: 100%;
+    margin-bottom: -120px;
+    padding-left: 10px;
+}
+.page-content::after{
+    content:"";
+    display: block;
+}
+footer, .page-content::after{
+    height: 120px;
+}
+footer{
+    background:#393e46;
+    padding-left: 0;
+    color: darkcyan;
+}
+header{
+    position: absolute;
+    top:0;
+    left:0;
+    padding: 0 100px;
+    /* background: #262626; */
+    background-color: darkslategray;
+    width:100%;
+    box-sizing: border-box;
+}
+header .logo{
+    color:#fff;
+    height:50px;
+    float:left;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+header nav{
+    float:right;
+}
+header nav ul{
+    margin:0;
+    padding:0;
+    display:flex;
+}
+header nav ul li{
+    list-style: none;
+}
+header nav ul li a{
+    height:50px;
+    line-height: 50px;
+    padding: 0 20px 0 20px;
+    color:#fff;
+    text-decoration: none;
+    display:block;
+}
+header nav ul li a:hover,
+header nav ul li a.active{
+    color:#fff;
+    background: #2196f3;
+    text-decoration: none;
+}
+.menu-toggle{
+    color:#fff;
+    float: right;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display:none;
+}
+.loginandsignup{
+    display:none;
+}
+
+
+@media(max-width: 500px){
+    #main{
+        padding-top: 50px;
+    }
+}
+/* 991px and below*/
+@media(max-width: 991px){
+    footer,footer .page-content::after{
+        height: 15%;
+    }
+    .page-content{
+        min-height: 100%;
+        margin-bottom: -15%;
+        padding-left: 10px;
+    }
+    .footer-conversation{
+        height:50px;
+    }
+    header{
+        padding:0 20px;
+    }
+    .menu-toggle{
+        display: block;
+    }
+    header nav{
+        display:block;
+        position: absolute;
+        width:100%;
+        height:calc(100vh - 50px);
+        background-color: darkslategray;
+        top:50px;
+        left:-100%;
+        transition: 0.5s;   
+    }
+    header nav.active{
+        left:0;
+        transition: 0.5s; 
+    }
+    header nav ul{
+        display:block;
+        text-align:center;
+        
+    }
+    header nav ul a{
+        border-bottom: 1px solid rgba(0,0,0,.2);
+    }
+    input{
+        margin-right: 10px;
+    }
+    .loginandsignup{
+        display:flex;
+        margin: 40px auto 0 auto;
+        line-height: 1.65;
+        padding: 20px 50px;
+        max-width:100%;
+        justify-content: space-between;
+        height:30px;
+    }
+    #main{
+        margin-top: 60px;
+    }
+    .btndivide{
+        width:100%;
+        display:block;
+    }
+    /* .btndivide #showlogin{
+        background-color: #2196f3;
+    } */
+    .log{
+        flex-basis: 50%;
+        height:30px;
+        color: gray;
+    }
+    .nnone{
+        display:none;
+    }
+    .sendbtn{
+        margin-top:0%;
+    }
+    
+}
+@media(min-width:990px){
+.register{
+    background-image: url('\/chatapp/images/15.jpeg');
+    background-size: 100%;
+    background-color: bisque;
+    background-repeat: no-repeat;
+}
+.logpanel{
+    display:flex;
+    margin: 40px auto 0 auto;
+    line-height: 1.65;
+    padding: 20px 50px;
+    max-width:100%;
+    justify-content: space-between;
+}
+#login{
+    flex-basis: 30%;
+    height:300px;
+    color: gray;
+}
+#signup{
+    flex-basis: 60%;
+    color: gray;
+}
+.logclass{
+    color:lightblue;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 0.2px solid lightblue; 
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+#login h2{
+text-align: center;
+color: gray;
+}
+#login label{
+    display: block;
+}
+.names{
+    display:flex;
+    margin-top: 10px;
+    width:100%;
+    justify-content: space-between;
+}
+#submitup{
+margin: 15px;
+}
+}
+.loading {
+    position: fixed;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #e5e9ec;
+    }
+.none{
+    display:none;
+}
+/* body{
+ background-size: ;
+
+} */
+.img-small{
+    height:60%;
+    background-color: darkcyan;
+    margin-right: 20px;
+}
+.down{
+    margin-bottom: 0%;
+}
+.messagefield{
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    /* background-color: aqua; */
+    margin-left: 9%;
+    margin-right: 9%;
+    border:10px solid rosybrown;
+}
+.messagebox{
+    border: 5px solid lightblue;
+    margin-left: 9%;
+    margin-right: 9%;
+    height:80px;
+    padding-top: 0px;
+    border-radius: 20px;
+}
+.conversation-field{
+    width:60%;
+    border: 3px solid lavender;
+    border-radius:20px;
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-left:10px;
+    display: flex;
+}
+.sent{
+    float:right;
+    border: 3px solid rgb(173, 200, 230);
+    margin-right: 10px;
+}
+.friend{
+    margin-top: 0px;
+    padding-top: 0px;
+    position: relative;
+}
+.messagehint{
+    float: right;
+    padding-top: 40px;
+    margin-left: 1%;
+}
+.messagetime{
+    /* float: right; */
+    padding-top: 40px;
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* margin-left: 60%; */
+}
+.elipse{
+    flex-basis: 5%;
+    height:50%;
+}
+.text{
+    flex-basis: 95%;
+}
+.info{
+    float:right;
+    width:20%;
+    border: 3px solid lavender;
+    border-radius:20px;
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-left:5px;
+    height:50px;
+}
+.infocontainer{
+    position:sticky;
+}
+.footer-conversation{
+    position: fixed;
+    border: 2px solid lightblue;
+    padding-left: 0;
+    bottom: 0;
+    width:100%;
+    border-radius: 15px;
+    padding-top:10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    height:15%;
+    
+}
+#message{
+    width:100%;
+    flex-basis: 95%;
+    /* height:50px; */
+}
+.sendbtn{
+    margin-top: 50%;
+    font-size: 80%;
+    margin-left: 20%;
+}
+.takeleft{
+float: right;
+}

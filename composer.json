@@ -1,0 +1,9 @@
+{
+    "require": {
+        "lynx39/lara-pdf-merger": "^1.0",
+        "barryvdh/laravel-dompdf": "^0.8.5",
+        "knplabs/knp-snappy": "^1.2",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "barryvdh/laravel-snappy": "^0.4.6"
+    }
+}
