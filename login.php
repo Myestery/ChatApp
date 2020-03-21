@@ -1,5 +1,5 @@
 <?php ?>
-<?php require('includes/header.php'); ?>
+<?php require 'includes/header.php'; ?>
 <div class="loginandsignup">
     <div class="log" id="showlogin"><button class="btn btn-primary btndivide">
             <div>Log in</div>
@@ -30,34 +30,43 @@
                 <div class="names">
                     <div class="form-group"><label for="surname" class="control-label">Surname</label><input type="text" id="surname" name="surname" class="form-control" required max="18" placeholder="0-18 letters">
                         <div class="invalid-feedback">surname must not include whitespace or symbol</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                     <div class="form-group"><label for="firstname" class="control-label">Firstname</label><input type="text" name="firstname" id="firstname" class="form-control" required max="18" placeholder="0-18 letters">
                         <div class="invalid-feedback">Firstname must not include whitespace or symbol</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                     <div class="form-group"><label for="middlename" class="control-label">Middlename</label><input type="text" name="middlename" id="middlename" class="form-control" max="18" placeholder="0-18 letters">
                         <div class="invalid-feedback">middlename must not include whitespace or symbol</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                 </div>
                 <div class="names">
                     <div class="form-group"><label for="email" class="control-label ">Email</label><input type="email" id="email" name="email" class="form-control" required>
                         <div class="invalid-feedback">Input a valid email</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
-                    <div class="form-group"><label for="phone" class="control-label">Phone Number</label><input type="number" name="phone" id="phone" class="form-control" required>
-                        <div class="invalid-feedback">Phone must not contain whitespace</div>
+                    <div class="form-group"><label for="phone" class="control-label">Phone Number</label><input type="text" name="phone" id="phone" class="form-control" required>
+                        <div class="invalid-feedback">Phone format: +123-45678900</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                     <div class="form-group"><label for="date" class="control-label">Date of birth</label><input type="date" name="date" id="date" class="form-control" required>
                         <div class="invalid-feedback">Input your date of birth</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                 </div>
                 <div class="names">
                     <div class="form-group"><label for="nickname" class="control-label">Nickname</label><input type="text" name="nickname" id="nickname" class="form-control" required max="18" min="1" placeholder="0-18 letters">
                         <div class="invalid-feedback">Nickname must not contain whitespace or symbols</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                     <div class="form-group"><label for="password1" class="control-label">Password</label><input type="password" name="password1" id="password1" class="form-control" placeholder="minimum 6 characters" min="6" required>
                         <div class="invalid-feedback">Password must have text, symbols and number </div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                     <div class="form-group"><label for="password2" class="control-label">Confirm Password</label><input type="password" name="password2" id="password2" class="form-control" min="6" placeholder="minimum 6 characters" required>
                         <div class="invalid-feedback">Password does not match</div>
+                        <div class="valid-feedback"> Good to go</div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -310,10 +319,12 @@
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                     <div class="invalid-feedback">please select your country</div>
+                    <div class="valid-feedback"> Good to go</div>
                 </div>
                 <div class="form-check form-group"><input type="checkbox" id="accept-terms" class="form-check-input" name="checkbox" required>
                     <label for="accept-terms" class="form-check-label control-label"> Accept terms and conditions</label>
                     <div class="invalid-feedback">Accept terms and conditions to continue</div>
+                    <div class="valid-feedback"> Good to go</div>
                 </div>
                 <div id="submitup" class="form-group"><input type="submit" value="Register" class="btn-success" class="form-control" style="margin-top:10px" id="signbtn"></div>
                 <br>
@@ -328,4 +339,4 @@
         $('body').addClass('register')
     </script>
 </div>
-<?php require('includes/footer.php'); ?>
+<?php require 'includes/footer.php'; ?>

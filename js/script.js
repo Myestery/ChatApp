@@ -1,36 +1,86 @@
-
-var userdata = [{
-  surname: "",
-  firstname: "",
-  middlename: "",
-  email: "",
-  phone: "",
-  dateofbirth: "",
-  nickname: "",
-  password: ""
-}];
+var userdata = [
+  {
+    surname: "",
+    firstname: "",
+    middlename: "",
+    email: "",
+    phone: "",
+    dateofbirth: "",
+    nickname: "",
+    password: ""
+  }
+];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var sendstate = true;
-$(document).ready(function () {
-  // $('#accept-terms').on('check',function(){
-  //     $('#submitup').attr('diabled',false)
-  // })
-  $(".menu-toggle").on("click", function () {
+const surnamePattern = /^[a-z][a-z0-9]{1,29}$/i;
+const middlenamePattern = /^[a-z]?[a-z0-9]{0,29}$/i;
+const phonePattern=/^([+][0-9]{3})+([-][0-9]{1,12})$/i;
+const emailPattern=/^([a-z0-9]{1,44})+([.]?)+([a-z]{1,9})$/i;//+(@[a-z0-9][.]?{0,3}[.][a-z])/i;
+//const trial="customerservive.ict.unn@unn.edu.ng";
+const trial="test@test.com";
+console.log(emailPattern.test(trial));
+$(document).ready(function() {
+  $("#surname").on("input", function() {
+    if (surnamePattern.test(this.value)) {
+      $("#surname").removeClass("is-invalid");
+      $("#surname").addClass("is-valid");
+    } else {
+      $("#surname").addClass("is-invalid");
+      $("#surname").removeClass("is-valid");
+    }
+  });
+  $("#firstname").on("input", function() {
+    if (surnamePattern.test(this.value)) {
+      $("#firstname").removeClass("is-invalid");
+      $("#firstname").addClass("is-valid");
+    } else {
+      $("#firstname").addClass("is-invalid");
+      $("#firstname").removeClass("is-valid");
+    }
+  });
+  $("#middlename").on("input", function() {
+    if (middlenamePattern.test(this.value)) {
+      $("#middlename").removeClass("is-invalid");
+      $("#middlename").addClass("is-valid");
+    } else {
+      $("#middlename").addClass("is-invalid");
+      $("#middlename").removeClass("is-valid");
+    }
+  });
+  $("#phone").on("input", function() {
+    if (phonePattern.test(this.value)) {
+      $("#phone").removeClass("is-invalid");
+      $("#phone").addClass("is-valid");
+    } else {
+      $("#phone").addClass("is-invalid");
+      $("#phone").removeClass("is-valid");
+    }
+  });
+  $("#email").on("input", function() {
+    if (emailPattern.test(this.value)) {
+      $("#email").removeClass("is-invalid");
+      $("#email").addClass("is-valid");
+    } else {
+      $("#email").addClass("is-invalid");
+      $("#email").removeClass("is-valid");
+    }
+  });
+  $(".menu-toggle").on("click", function() {
     $("#mobile").toggleClass("active");
   });
-  $("#showlogin").on("click", function () {
+  $("#showlogin").on("click", function() {
     $("#signup").addClass("nnone");
     $("#login").removeClass("nnone");
-    $('body').css({
-      'background-image': 'url(images/12.jpeg)',
-      'background-repeat':'no-repeat',
-      'backgroung-origin':'content-box'
+    $("body").css({
+      "background-image": "url(images/12.jpeg)",
+      "background-repeat": "no-repeat",
+      "backgroung-origin": "content-box"
     });
   });
-  $("#showsignup").on("click", function () {
+  $("#showsignup").on("click", function() {
     $("#login").addClass("nnone");
     $("#signup").removeClass("nnone");
-    $('body').css('background-color', 'cornsilk');
+    $("body").css("background-color", "cornsilk");
   });
   var symbols = [
     "!",
@@ -55,7 +105,7 @@ $(document).ready(function () {
     ".",
     ","
   ];
-  $("#signform").on("submit", function (sub) {
+  $("#signform").on("submit", function(sub) {
     sub.preventDefault();
     // clear the errors from last try
     sendstate = true;
@@ -116,15 +166,15 @@ $(document).ready(function () {
     }
     if (
       $("#phone")
-      .val()
-      .includes(" ")
+        .val()
+        .includes(" ")
     ) {
       phonestate = "space";
     }
     if (
       $("#email")
-      .val()
-      .includes(" ")
+        .val()
+        .includes(" ")
     ) {
       emailstate = "space";
     }
@@ -174,8 +224,8 @@ $(document).ready(function () {
     for (let symbol of symbols) {
       if (
         $("#password1")
-        .val()
-        .includes(symbol)
+          .val()
+          .includes(symbol)
       ) {
         passwordstate = "good";
       }
@@ -184,8 +234,8 @@ $(document).ready(function () {
       for (let number of numbers) {
         if (
           $("#password1")
-          .val()
-          .includes(number)
+            .val()
+            .includes(number)
         ) {
           passwordstate = "better";
         }
@@ -274,7 +324,8 @@ $(document).ready(function () {
     if (sendstate) {
       $("#spin").removeClass("none");
       $.post(
-        "process.php", {
+        "process.php",
+        {
           surname: surname,
           firstname: firstname,
           middlename: middlename,
@@ -286,7 +337,7 @@ $(document).ready(function () {
           password2: $("#password2").val(),
           country: $("#country").val()
         },
-        function (params) {
+        function(params) {
           $("#status").removeClass("none");
           $("#status").html(params);
           $("#spin").addClass("none");
@@ -301,15 +352,16 @@ $(document).ready(function () {
       );
     }
   });
-  $("#logform").on("submit", function (login) {
+  $("#logform").on("submit", function(login) {
     $("#spinlog").removeClass("none");
     login.preventDefault();
     $.post(
-      "process.php", {
+      "process.php",
+      {
         useremail: $("#useremail").val(),
         userpassword: $("#userpassword").val()
       },
-      function (params) {
+      function(params) {
         $("#logstatus").removeClass("none");
         $("#logstatus").html(params);
         $("#spinlog").addClass("none");
@@ -319,7 +371,7 @@ $(document).ready(function () {
       }
     );
   });
-  $(".infocontainer").on("click", function () {
+  $(".infocontainer").on("click", function() {
     $(this).toggleClass("none");
   });
   // $(".messagebox").each(function (index) {
@@ -334,23 +386,25 @@ $(document).ready(function () {
   //         );
   //     });
   // });
-  $("#sendbtn").on("click", function () {
-    $('#firstconv').remove();
+  $("#sendbtn").on("click", function() {
+    $("#firstconv").remove();
     $.post(
-      "http://johnpaul/chatapp/includes/functions.php", {
+      "http://johnpaul/chatapp/includes/functions.php",
+      {
         message: $("#message").val(),
         messageto: $(".friendId").text()
       },
-      function (params) {
+      function(params) {
         $("#message").val(" ");
         window.scrollTo(0, document.documentElement.scrollHeight);
         $.get(
-          "http://johnpaul/chatapp/includes/functions.php", {
+          "http://johnpaul/chatapp/includes/functions.php",
+          {
             friendtoupdate: $("small.friendId").html(),
             updatemessage: true,
             lastindex: $("#lastindex").html()
           },
-          function (result) {
+          function(result) {
             if (result.length > 22) {
               $("#lastindex").remove();
               $("#main").append(result);
@@ -365,45 +419,73 @@ $(document).ready(function () {
   // $('#tobeclicked').on('click',function(){
   //     $('#very').click();
   // })
-  $('.delforme').each(function (index) {
-    $(this).on('click', function () {
+  $(".delforme").each(function(index) {
+    $(this).on("click", function() {
       // console.log($('.data').eq(index)[0].attributes['data-target'].value.substring(6,this.length))
-      $.post('http://johnpaul/chatapp/includes/functions.php', {
-          delete: $('.data').eq(index)[0].attributes['data-target'].value.substring(6, this.length),
-          type: 'forme',
+      $.post(
+        "http://johnpaul/chatapp/includes/functions.php",
+        {
+          delete: $(".data")
+            .eq(index)[0]
+            .attributes["data-target"].value.substring(6, this.length),
+          type: "forme",
           friend: $("small.friendId").html()
         },
-        function (params) {
-          $('.conversation-field').eq(index).remove();
-        });
+        function(params) {
+          $(".conversation-field")
+            .eq(index)
+            .remove();
+        }
+      );
     });
   });
 
- function deletemessage(){
-  $('.delforall').each(function (index) {
-    $(this).on('click', function () {
-      // console.log($('.data').eq(index)[0].attributes['data-target'].value.substring(6,this.length))
-      $.post('http://johnpaul/chatapp/includes/functions.php', {
-          delete: $('.data').eq(index)[0].attributes['data-target'].value.substring(6, this.length),
-          type: 'forall',
-          friend: $("small.friendId").html()
-        },
-        function (params) {
-          $('.conversation-field').eq(index).remove();
-          $('.data').each(function (index1, element) {
-            if ($('.data').eq(index1).attr('data-target').substring(6, this.length) > index) {
-              // let number = ($('this').attr('data-target').substring(6, this.length) - 1);
-              // number = number.toString().length == 1 ? '0' + number.toString() : number;
-              // $('#Modal'+number+'').remove();
-              // $('this').attr('data-target') = $('this').attr('data-target').substring(0, 6) + number.toString();
-              console.log('hi');
-            }
-
-          });
-        });
+  function deletemessage() {
+    $(".delforall").each(function(index) {
+      $(this).on("click", function() {
+        // console.log($('.data').eq(index)[0].attributes['data-target'].value.substring(6,this.length))
+        $.post(
+          "http://johnpaul/chatapp/includes/functions.php",
+          {
+            delete: $(".data")
+              .eq(index)[0]
+              .attributes["data-target"].value.substring(6, this.length),
+            type: "forall",
+            friend: $("small.friendId").html()
+          },
+          function(params) {
+            $(".conversation-field")
+              .eq(index)
+              .remove();
+            $(".data").each(function(index1, element) {
+              if (
+                $(".data")
+                  .eq(index1)
+                  .attr("data-target")
+                  .substring(6, this.length) > index
+              ) {
+                // let number = ($('this').attr('data-target').substring(6, this.length) - 1);
+                // number = number.toString().length == 1 ? '0' + number.toString() : number;
+                // $('#Modal'+number+'').remove();
+                // $('this').attr('data-target') = $('this').attr('data-target').substring(0, 6) + number.toString();
+                console.log("hi");
+              }
+            });
+          }
+        );
+      });
     });
-  });
-}
-deletemessage();
-
+  }
+  deletemessage();
 });
+
+/*
+surname done!
+firstname done!
+email done!
+phone number  
+password
+confirm password
+country
+terms and condition
+*/

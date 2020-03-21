@@ -178,4 +178,50 @@
 //         }
 //       }
 // }
-console.log("hi");
+// function analysis(x){
+//   if(x==1){
+//     return 3;
+//   }else{
+//     return 3+ (0.5*analysis(x-1));
+//   }
+// }
+// console.log(analysis(4));
+const story =
+  "There was once an employee named Dwight. Dwigt was not very smart, but he was loyal. I could have promoted dwight but i did not";
+const search = /Dwigh?t/gi;
+const updatedstory = story.replace(search, "Samuel");
+console.log(updatedstory);
+const pets = [
+  "cat: Smith,Meowsalot",
+  "young dog: Jones, Barksalot",
+  "rabbit: Doe, Fluffy"
+];
+const petpattern=/([a-z\s?]+):\s([a-z]+),([a-z ?]+)/i;
+const petsUpdated=pets.map(pet=>pet.replace(petpattern,'$3 $2 <span class="description">$1</span>'));
+petsUpdated.forEach(element => {
+  $('#root').append(element+"<br>");
+});
+
+$(document).ready(function () {
+  const usernamePattern=/^[a-z][a-z0-9]{7,29}$/i;
+ $('#username').on('input',function(){
+  if(usernamePattern.test(this.value)){
+    $("#helpId").html("good username");
+  }else{
+    $("#helpId").html("Username must start with a letter, and must have up to 8 characters and less than 30 characters");
+  }
+
+  });
+  const storyTwo = "There are a lot of phone numbers. One is 5555555555, and anothr is 123-123-1234.Yet another is 321.321.4321. Another is 555 555 5555. Did you know another phone number is 1 555 555 5555 and my friend has a number of (555) 123 1234. My other friend has a number of 555 555-5555 and another had 1.987.654.3210.";
+  const phonePattern=/1?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})/g;
+  let results=storyTwo.match(phonePattern);
+  if(!results) results=[];
+  const resultsUniform = results.map(x => x.replace(phonePattern,'($1) $2-$3'));
+  $('#root').html(`
+  <hr>
+  <p> There are ${results.length} phone numbers in this string of text
+  <ul>
+  ${resultsUniform.map(x =>`<li>${x}</li>`).join('')}
+  </ul>
+  `);
+});
